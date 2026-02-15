@@ -1,0 +1,44 @@
+https://www.keycloak.org/getting-started/getting-started-docker
+docker run -d -p 127.0.0.1:8181:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+http://localhost:8181/admin/master/console/
+
+https://developer.confluent.io/confluent-tutorials/kafka-on-docker/#set-up
+docker ps
+docker info
+docker login output
+
+mvn clean package -DskipTests
+mvn clean compile jib:build    #for creating docker image using JIB and push to hub
+mvn clean install jib:build    #its good
+mvn clean install jib:build -DskipTests
+
+mvn clean compile jib:dockerBuild -DskipTests # it will create in local not push to hub
+docker compose build notification-service   #single service build
+docker compose restart notification-service #single service restart
+docker compose up -d
+docker compose down -v
+docker compose up -d --force-recreate
+docker logs -f broker
+docker run -d -p 9411:9411 openzipkin/zipkin
+docker exec -it api-gateway ls /app/resources  #checking properties file uploaded or not
+docker system prune -f
+docker build -t apigateway-layered -f Dockerfile.layered .  #for creating docker image using multilayered
+docker exec -it microservices-new-notification-service-1 printenv | grep KAFKA
+docker compose build --no-cache
+docker exec -it broker bash
+cd /var/lib/kafka/data
+broker:/opt/kafka/bin$ ls -a
+docker exec -it broker /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server broker:9092
+
+docker compose down -v --remove-orphans
+docker system prune -a -f
+docker volume prune -f
+
+------------------------------
+order-service:
+  image: dvdr/order-service
+  pull_policy: never
+mvn clean install jib:dockerBuild
+docker compose up
+
+

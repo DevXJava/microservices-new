@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+.idea
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -36,3 +37,30 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# ========================
+# Docker Volume Data
+# ========================
+
+# MySQL
+mysql-order/
+mysql-inventory/
+mysql-keycloak/
+
+# Mongo
+mongo-data/
+
+# Kafka
+kafka-data/
+
+# Generic DB files
+*.ibd
+*.ib_logfile*
+*.ib_buffer_pool
+*.frm
+*.err
+*.pid
+*.sock
+*.log
+binlog*
+
