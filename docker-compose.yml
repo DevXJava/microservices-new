@@ -120,9 +120,11 @@ services:
   # Eureka
   # ========================
   discovery-server:
-    image: dvdr/discovery-server:latest
-    pull_policy: never
     container_name: discovery-server
+    image: dvdr/discovery-server:latest
+    volumes:
+      - ./logs/discovery-server:/app/logs
+    pull_policy: never
     ports:
       - "8761:8761"
     environment:
@@ -134,8 +136,10 @@ services:
   # API Gateway
   # ========================
   api-gateway:
-    image: dvdr/api-gateway:latest
     container_name: api-gateway
+    image: dvdr/api-gateway:latest
+    volumes:
+      - ./logs/api-gateway:/app/logs
     pull_policy: never
     ports:
       - "8181:8080"
@@ -154,8 +158,10 @@ services:
   # ========================
   product-service:
     container_name: product-service
-    pull_policy: never
     image: dvdr/product-service:latest
+    volumes:
+      - ./logs/product-service:/app/logs
+    pull_policy: never
     environment:
       - SPRING_PROFILES_ACTIVE=docker
     depends_on:
@@ -166,6 +172,8 @@ services:
   order-service:
     container_name: order-service
     image: dvdr/order-service:latest
+    volumes:
+      - ./logs/order-service:/app/logs
     pull_policy: never
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -185,6 +193,8 @@ services:
   inventory-service:
     container_name: inventory-service
     image: dvdr/inventory-service:latest
+    volumes:
+      - ./logs/inventory-service:/app/logs
     pull_policy: never
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -201,6 +211,8 @@ services:
   notification-service:
     container_name: notification-service
     image: dvdr/notification-service:latest
+    volumes:
+      - ./logs/notification-service:/app/logs
     pull_policy: never
     restart: always
     #build: ./notification-service

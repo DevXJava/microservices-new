@@ -42,3 +42,13 @@ mvn clean install jib:dockerBuild
 docker compose up
 
 
+
+mkdir -p logs/order-service
+mkdir -p logs/product-service
+mkdir -p logs/inventory
+mkdir -p logs/notification-service
+mkdir -p logs/api-gateway
+mkdir -p logs/discovery-server
+
+
+

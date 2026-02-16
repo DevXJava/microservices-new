@@ -64,3 +64,12 @@ kafka-data/
 *.log
 binlog*
 
+# Ignore log files
+logs/*/*.log
+
+# Keep folder structure
+!logs/
+!logs/*/
+!logs/*/.gitkeep
+
+
