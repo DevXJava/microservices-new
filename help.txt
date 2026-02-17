@@ -1,12 +1,18 @@
+====================Local Setup====================================
 https://www.keycloak.org/getting-started/getting-started-docker
-docker run -d -p 127.0.0.1:8181:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+1. docker run -d -p 127.0.0.1:8181:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:26.5.2 start-dev
+#Running keycloak
 http://localhost:8181/admin/master/console/
+
+2. docker run -d -p 9411:9411 openzipkin/zipkin  #running zipkin
+
+3.docker compose -f docker-compose-kafka.yml up -d #Run single docker image for KAFKA only
 
 https://developer.confluent.io/confluent-tutorials/kafka-on-docker/#set-up
 docker ps
 docker info
 docker login output
-
+=================================Docker compose setup=================================
 mvn clean package -DskipTests
 mvn clean compile jib:build    #for creating docker image using JIB and push to hub
 mvn clean install jib:build    #its good

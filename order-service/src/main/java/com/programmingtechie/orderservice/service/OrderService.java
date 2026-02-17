@@ -4,6 +4,7 @@ import brave.Span;
 import brave.Tracer;
 import com.programming.techie.common.event.OrderPlacedEvent;
 import com.programmingtechie.orderservice.dto.InventoryResponse;
+import com.programmingtechie.orderservice.dto.OrderDto;
 import com.programmingtechie.orderservice.dto.OrderLineItemsDto;
 import com.programmingtechie.orderservice.dto.OrderRequest;
 import com.programmingtechie.orderservice.model.Order;
@@ -83,5 +84,10 @@ public class OrderService {
         orderLineItems.setQuantity(orderLineItemsDto.getQuantity());
         orderLineItems.setSkuCode(orderLineItemsDto.getSkuCode());
         return orderLineItems;
+    }
+
+    public List<Order> getAllOrders(){
+        List<Order> orders = orderRepository.findAll();
+        return orders;
     }
 }

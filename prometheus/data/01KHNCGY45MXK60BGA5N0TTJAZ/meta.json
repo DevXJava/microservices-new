@@ -1,0 +1,17 @@
+{
+	"ulid": "01KHNCGY45MXK60BGA5N0TTJAZ",
+	"minTime": 1771246250825,
+	"maxTime": 1771250400000,
+	"stats": {
+		"numSamples": 29016,
+		"numSeries": 468,
+		"numChunks": 936
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01KHNCGY45MXK60BGA5N0TTJAZ"
+		]
+	},
+	"version": 1
+}
