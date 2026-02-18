@@ -3,6 +3,7 @@ package com.programmingtechie.orderservice.service;
 import brave.Span;
 import brave.Tracer;
 import com.programming.techie.common.event.OrderPlacedEvent;
+import com.programming.techie.order.exceptions.OrderException;
 import com.programmingtechie.orderservice.dto.InventoryResponse;
 import com.programmingtechie.orderservice.dto.OrderDto;
 import com.programmingtechie.orderservice.dto.OrderLineItemsDto;
@@ -15,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Arrays;
@@ -86,8 +88,39 @@ public class OrderService {
         return orderLineItems;
     }
 
+
     public List<Order> getAllOrders(){
-        List<Order> orders = orderRepository.findAll();
-        return orders;
+         return orderRepository.findAll();
+
     }
+
+    public Order getOrderById(long id){
+        return orderRepository.findById(id).orElseThrow(()-> new OrderException("order not found with id : "+id));
+
+    }
+
+    public void deleteById(long id){
+       Order order = orderRepository.findById(id).orElseThrow(()->new OrderException("Order not found with : "+id));
+       orderRepository.delete(order);
+    }
+
+
+    public Order update(Order orderNew,long id){
+
+        Order orderAvailable = orderRepository.findById(id).orElseThrow(()->new OrderException("Order not found with id: " + id));
+
+        orderAvailable.setOrderNumber(orderNew.getOrderNumber());
+
+        //clear old items
+        orderAvailable.getOrderLineItemsList().clear();
+        // Add new items
+        orderAvailable.getOrderLineItemsList()
+                .addAll(orderNew.getOrderLineItemsList());
+
+        return orderRepository.save(orderAvailable);
+
+    }
+
+
+
 }

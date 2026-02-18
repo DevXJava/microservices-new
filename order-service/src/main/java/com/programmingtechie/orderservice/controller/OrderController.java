@@ -1,7 +1,6 @@
 package com.programmingtechie.orderservice.controller;
 
-import com.programmingtechie.orderservice.dto.OrderDto;
-import com.programmingtechie.orderservice.dto.OrderLineItemsDto;
+import com.programming.techie.order.exceptions.OrderException;
 import com.programmingtechie.orderservice.dto.OrderRequest;
 import com.programmingtechie.orderservice.model.Order;
 import com.programmingtechie.orderservice.service.OrderService;
@@ -42,11 +41,35 @@ public class OrderController {
     @GetMapping("/allorders")
     public ResponseEntity<?> getAllOrders(){
         List<Order> list = orderService.getAllOrders();
-        if(list.isEmpty()){
-            ResponseEntity.noContent().build();
+        if(!list.isEmpty()){
+            return ResponseEntity.ok(list);
+
         }
-        return ResponseEntity.ok(list);
+        throw new OrderException("no orders !!!");
     }
+
+    @GetMapping("/getbyid/{id}")
+    public ResponseEntity<?> getOrderById(@PathVariable long id ){
+      Order order = orderService.getOrderById(id);
+      if(order!=null){
+          return new ResponseEntity<>(order,HttpStatus.OK);
+      }
+      throw new OrderException("order data not found !!!");
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable long id){
+        orderService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> updateOrder(@RequestBody Order order, @PathVariable long id) {
+
+        Order updatedOrder = orderService.update(order, id);
+        return ResponseEntity.ok(updatedOrder);
+    }
+
 
 
 }
