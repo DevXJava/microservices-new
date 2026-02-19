@@ -1,6 +1,8 @@
 package com.programmingtechie.inventoryservice.service;
 
+import com.programming.techie.inventory.exceptions.InventoryException;
 import com.programmingtechie.inventoryservice.dto.InventoryResponse;
+import com.programmingtechie.inventoryservice.model.Inventory;
 import com.programmingtechie.inventoryservice.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -17,6 +19,16 @@ public class InventoryService {
 
     private final InventoryRepository inventoryRepository;
 
+    public Inventory saveInventory(Inventory inventory){
+        if (inventory.getSkuCode() == null || inventory.getSkuCode().isBlank()) {
+            throw new InventoryException("SKU Code cannot be empty");
+        }
+        if (inventory.getQuantity() == null || inventory.getQuantity() < 0) {
+            throw new InventoryException("Quantity cannot be negative");
+        }
+        return inventoryRepository.save(inventory);
+    }
+
     @Transactional(readOnly = true)
     @SneakyThrows
     public List<InventoryResponse> isInStock(List<String> skuCode){
@@ -28,5 +40,18 @@ public class InventoryService {
                    InventoryResponse.builder().skuCode(inventory.getSkuCode())
                            .isInStock(inventory.getQuantity()>0)
                            .build()).toList();
+    }
+
+    public Inventory updateInventory(Inventory inventoryNew, Long id){
+        Inventory inventoryAvail = inventoryRepository.findById(id).orElseThrow(()->new InventoryException("Inventory not available with id: "+id));
+        inventoryAvail.setSkuCode(inventoryNew.getSkuCode());
+        inventoryAvail.setQuantity(inventoryNew.getQuantity());
+        return inventoryRepository.save(inventoryAvail);
+
+    }
+
+    public void deleteInventoryById(Long id){
+        Inventory inventory = inventoryRepository.findById(id).orElseThrow(()->new InventoryException("Inventory not available with id : "+id));
+        inventoryRepository.delete(inventory);
     }
 }
