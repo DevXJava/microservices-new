@@ -1,5 +1,6 @@
 package com.programmingtechie.productservice.service;
 
+import com.programming.techie.product.exceptions.ProductException;
 import com.programmingtechie.productservice.dto.ProductRequest;
 import com.programmingtechie.productservice.dto.ProductResponse;
 import com.programmingtechie.productservice.model.Product;
@@ -31,6 +32,23 @@ public class ProductService {
     public List<ProductResponse> getAllProducts() {
        List<Product>  products = productRepository.findAll();
       return products.stream().map(this::mapToProductResponse).collect(Collectors.toList());
+    }
+
+    public Product getProductById(String id){
+       return productRepository.findById(id).orElseThrow(()-> new ProductException("product is not avail with id : "+id));
+    }
+
+    public Product updateProduct(Product newProduct,String id){
+        Product productAvail = productRepository.findById(id).orElseThrow(()->new ProductException("product is not available with id : "+id));
+        productAvail.setName(newProduct.getName());
+        productAvail.setDescription(newProduct.getDescription());
+        productAvail.setPrice(newProduct.getPrice());
+        return productRepository.save(productAvail);
+    }
+
+    public void deleteProductById(String id){
+        Product product = productRepository.findById(id).orElseThrow(()->new ProductException("product is not available with id : "+id));
+        productRepository.delete(product);
     }
 
     private ProductResponse mapToProductResponse(Product product) {

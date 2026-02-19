@@ -5,7 +5,6 @@ import brave.Tracer;
 import com.programming.techie.common.event.OrderPlacedEvent;
 import com.programming.techie.order.exceptions.OrderException;
 import com.programmingtechie.orderservice.dto.InventoryResponse;
-import com.programmingtechie.orderservice.dto.OrderDto;
 import com.programmingtechie.orderservice.dto.OrderLineItemsDto;
 import com.programmingtechie.orderservice.dto.OrderRequest;
 import com.programmingtechie.orderservice.model.Order;
@@ -16,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Arrays;
