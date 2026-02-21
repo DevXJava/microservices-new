@@ -1,6 +1,6 @@
 package com.programmingtechie.productservice.service;
 
-import com.programming.techie.product.exceptions.ProductException;
+import com.programmingtechie.product.exceptions.ProductException;
 import com.programmingtechie.productservice.dto.ProductRequest;
 import com.programmingtechie.productservice.dto.ProductResponse;
 import com.programmingtechie.productservice.model.Product;

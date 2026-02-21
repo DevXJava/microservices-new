@@ -1,4 +1,4 @@
-package com.interview.academian;
+package com.programmingtechie.academian;
 class Parent{
     public void friend(){
         System.out.println("friend parent ...");

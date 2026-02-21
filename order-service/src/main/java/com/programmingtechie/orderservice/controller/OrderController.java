@@ -1,6 +1,5 @@
 package com.programmingtechie.orderservice.controller;
-
-import com.programming.techie.order.exceptions.OrderException;
+import com.programmingtechie.order.exceptions.OrderException;
 import com.programmingtechie.orderservice.dto.OrderRequest;
 import com.programmingtechie.orderservice.model.Order;
 import com.programmingtechie.orderservice.service.OrderService;

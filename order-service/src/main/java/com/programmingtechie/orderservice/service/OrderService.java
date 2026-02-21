@@ -2,8 +2,8 @@ package com.programmingtechie.orderservice.service;
 
 import brave.Span;
 import brave.Tracer;
-import com.programming.techie.common.event.OrderPlacedEvent;
-import com.programming.techie.order.exceptions.OrderException;
+import com.programmingtechie.common.event.OrderPlacedEvent;
+import com.programmingtechie.order.exceptions.OrderException;
 import com.programmingtechie.orderservice.dto.InventoryResponse;
 import com.programmingtechie.orderservice.dto.OrderLineItemsDto;
 import com.programmingtechie.orderservice.dto.OrderRequest;

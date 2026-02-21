@@ -1,4 +1,4 @@
-package com.programming.techie.inventory.exceptions;
+package com.programmingtechie.inventory.exceptions;
 
 public class InventoryException extends RuntimeException{
     private String message;

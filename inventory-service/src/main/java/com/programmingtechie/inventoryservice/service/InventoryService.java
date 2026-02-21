@@ -1,6 +1,5 @@
 package com.programmingtechie.inventoryservice.service;
-
-import com.programming.techie.inventory.exceptions.InventoryException;
+import com.programmingtechie.inventory.exceptions.InventoryException;
 import com.programmingtechie.inventoryservice.dto.InventoryResponse;
 import com.programmingtechie.inventoryservice.model.Inventory;
 import com.programmingtechie.inventoryservice.repository.InventoryRepository;

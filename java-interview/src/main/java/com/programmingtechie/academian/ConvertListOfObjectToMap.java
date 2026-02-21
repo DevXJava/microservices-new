@@ -1,4 +1,4 @@
-package com.interview.academian;
+package com.programmingtechie.academian;
 
 import java.util.Arrays;
 import java.util.List;

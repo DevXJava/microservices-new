@@ -1,4 +1,4 @@
-package com.programming.notificationservice;
+package com.programmingtechie.notificationservice;
 
 import com.programming.techie.common.event.OrderPlacedEvent;
 import lombok.extern.slf4j.Slf4j;

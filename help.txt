@@ -57,4 +57,10 @@ mkdir -p logs/api-gateway
 mkdir -p logs/discovery-server
 
 
+#Swagger
+http://localhost:8080/v3/api-docs
+http://localhost:8080/product-service/swagger-ui/index.html
+http://localhost:8080/order-service/swagger-ui/index.html
+
+
 

@@ -1,4 +1,4 @@
-package com.programming.techie.notification.exceptions;
+package com.programmingtechie.notification.exceptions;
 
 public class NotificationException extends RuntimeException{
 

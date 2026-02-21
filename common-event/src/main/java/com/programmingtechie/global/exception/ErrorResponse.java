@@ -1,4 +1,4 @@
-package com.programming.techie.global.exception;
+package com.programmingtechie.global.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

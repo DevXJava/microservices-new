@@ -1,4 +1,4 @@
-package com.programming.techie.common.event;
+package com.programmingtechie.common.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

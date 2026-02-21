@@ -1,4 +1,4 @@
-package com.programming.techie.product.exceptions;
+package com.programmingtechie.product.exceptions;
 
 public class ProductException extends RuntimeException{
     private String message;

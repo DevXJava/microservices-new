@@ -1,4 +1,4 @@
-package com.interview.academian;
+package com.programmingtechie.academian;
 
 public class AvgOfPositiveNumberArray {
     public static void main(String[] args) {

@@ -1,9 +1,9 @@
-package com.programming.techie.global.exception;
+package com.programmingtechie.global.exception;
 
-import com.programming.techie.inventory.exceptions.InventoryException;
-import com.programming.techie.notification.exceptions.NotificationException;
-import com.programming.techie.order.exceptions.OrderException;
-import com.programming.techie.product.exceptions.ProductException;
+import com.programmingtechie.inventory.exceptions.InventoryException;
+import com.programmingtechie.notification.exceptions.NotificationException;
+import com.programmingtechie.order.exceptions.OrderException;
+import com.programmingtechie.product.exceptions.ProductException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
