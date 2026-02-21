@@ -1,4 +1,4 @@
-package com.programing.techie.discoveryserver.config;
+package com.programingtechie.discoveryserver.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

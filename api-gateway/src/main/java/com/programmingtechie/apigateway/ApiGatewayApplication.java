@@ -1,4 +1,4 @@
-package com.programming.techie.common.event.apigateway;
+package com.programingtechie.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
